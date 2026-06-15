@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Gallery | SLAY BodyPiercing</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+  <link rel="shortcut icon" href="./images/logo/logo.png" type="image/x-icon">
+  <link rel="icon" href="./images/logo/logo.fv.jpg" type="image/png">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuJqEm9ej-6zv-3ZgTUrcpaxcjma_VUUk",
+      authDomain: "slaybodypiercing.firebaseapp.com",
+      projectId: "slaybodypiercing",
+      storageBucket: "slaybodypiercing.firebasestorage.app",
+      messagingSenderId: "799416605246",
+      appId: "1:799416605246:web:499194c1c7ea3b77be4f6f"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  <!-- EmailJS SDK (browser) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer ></script>
+  <!-- jsPDF for PDF receipt -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="aftercare.html">Aftercare</a>
+      <a href="booking.html">Book Now</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    <a class="hd" href="index.html"><img src="./images/logo/logo.jpg" alt="SLAY BodyPiercing" class="logo-img"></a>
+    <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">&#9776;</button>
+  </header>
+  <main>
+
+    <section class="gallery-into">
+      <h1>Gallery of Timeless Piercing Artistry</h1>
+      <p>Our gallery showcases the beauty and precision of professional piercing. Each piece is a reflection of artistry, skill, and attention to detail, designed to enhance individual style with elegance. Browse through our collection to see how creativity meets craftsmanship, and find inspiration for your next timeless look.</p>
+
+
+    </section>
+
+    <section id="gallery" class="container">
+     
+      <br> <br>
+      <div class="grid gallery">
+        <img src="./images/pic1.jpeg" alt="Ear Piercing Example" loading="lazy" class="expandable">
+        <img src="./images/pic2.jpeg" alt="Ear Piercing Example" loading="lazy" class="expandable">
+        <img src="./images/pic3.jpeg" alt="Ear Piercing Example" loading="lazy" class="expandable">
+        <img src="./images/pic4.jpeg" alt="Ear Piercing Example" loading="lazy" class="expandable">
+        <img src="./images/pic5.JPG" alt="Ear Piercing Example" loading="lazy" class="expandable">
+        <img src="./images/pic6.jpeg" alt="Ear Piercing Example" loading="lazy" class="expandable">
+        <img src="./images/pic7.jpeg" alt="Ear Piercing Example" loading="lazy" class="expandable">
+        <img src="./images/pic9.jpeg" alt="Ear Piercing Example" loading="lazy" class="expandable">
+        <img src="./images/caro1.jpg" alt="Belly Ring Example" loading="lazy" class="expandable">
+        <img src="./images/product.jpg" alt="Belly Ring Example" loading="lazy" class="expandable">
+        <img src="./images/pacage.jpg" alt="Belly Ring Example" loading="lazy" class="expandable">
+        <img src="./images/caro5.jpg" alt="Belly Ring Example" loading="lazy" class="expandable">
+      </div>
+      <!-- Modal for expanded image -->
+      <div id="gallery-modal" class="gallery-modal">
+        <span class="gallery-modal-close" aria-label="Close">&times;</span>
+        <img id="gallery-modal-img" src="" alt="Expanded Gallery" />
+      </div>
+    </section>
+    <div id="mobile-nav">
+      <button aria-label="Close navigation">&times;</button>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="aftercare.html">Aftercare</a>
+      <a href="booking.html">Book Now</a>
+      <a href="about.html">About Us</a>
+    </div>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <!-- Social Media Links -->
+      <div class="footer-social">
+        <a href="https://www.instagram.com/slaybodypiercingbysena/">
+          <img class="social-icon" src="images/logo-instagram.svg" alt="Instagram" />
+        </a>
+        <a href="#">
+          <img class="social-icon" src="images/logo-tiktok.svg" alt="TikTok" />
+        </a>
+      </div>
+      
+      <!-- Footer Bottom Section -->
+      <div class="footer-bottom">
+        <!-- Copyright Information -->
+        <div class="footer-info">
+          <span>&copy; @2025 SLAY BodyPiercing. All rights reserved.</span>
+          <span>Piercing Services | Accra, Ghana</span>
+        </div>
+      </div>
+      
+      <!-- Additional Footer Info -->
+      <div class="footer-info">
+        <span>© @2025 SLAY BodyPiercing</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>

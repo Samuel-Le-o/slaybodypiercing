@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+  ========================================
+  SLAY BODYPIERCING - HOME PAGE
+  ========================================
+  Main landing page for SLAY BodyPiercing website
+  Features: Hero section, deposit info, navigation
+  Last updated: 2025
+  ========================================
+-->
+<head>
+  <!-- META TAGS & SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Home | SLAY BodyPiercing</title>
+  
+  <!-- STYLESHEETS & SCRIPTS -->
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+  
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="./images/logo/logo.png" type="image/x-icon">
+  <link rel="icon" href="./images/logo/logo.fv.jpg" type="image/png">
+  
+  <!-- FIREBASE SDK - Database connection -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script>
+    // Firebase configuration for database connection
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuJqEm9ej-6zv-3ZgTUrcpaxcjma_VUUk",
+      authDomain: "slaybodypiercing.firebaseapp.com",
+      projectId: "slaybodypiercing",
+      storageBucket: "slaybodypiercing.firebasestorage.app",
+      messagingSenderId: "799416605246",
+      appId: "1:799416605246:web:499194c1c7ea3b77be4f6f"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+
+  <!-- EMAILJS SDK - For booking form submissions -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer ></script>
+
+  <!-- JSPDF - For generating PDF receipts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+
+</head>
+<body>
+  <!-- Welcome Modal -->
+  <div id="welcomeModal" class="welcome-modal">
+    <div class="welcome-content">
+      <button id="closeWelcome" class="close-welcome">&times;</button>
+      <h2>Welcome to SLAY BodyPiercing! 👋</h2>
+      <p>Thank you for visiting our website! We're excited to help you with all your body piercing needs. Enjoy exploring our services and feel free to reach out if you have any questions.</p>
+      <div class="welcome-buttons">
+        <a href="services.html" class="welcome-btn primary">Show Services</a>
+        <button id="dontShowAgain" class="welcome-btn secondary">Don't Show Again</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- 
+  ========================================
+  MAIN BODY CONTENT
+  ========================================
+-->
+
+  <!-- 
+    HEADER SECTION
+    Contains: Main navigation, logo, mobile hamburger menu
+    CSS Classes: header, nav#nav, .hd, .hamburger
+  -->
+  <header>
+    <!-- Desktop Navigation Menu -->
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="aftercare.html">Aftercare</a>
+      <a href="booking.html">Book Now</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    
+    <!-- Logo (clickable, links to home) -->
+    <a class="hd" href="index.html">
+      <img src="./images/logo/logo.jpg" alt="SLAY BodyPiercing" class="logo-img">
+    </a> 
+    
+    <!-- Mobile Hamburger Menu Button -->
+    <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+      &#9776;
+    </button>
+  </header>
+
+  <!-- 
+    HERO SECTION
+    Main landing area with brand message and call-to-action buttons
+    CSS Classes: .hero, .hero-text, .btn
+  -->
+  <section class="hero" id="hero1">
+    <!-- Hero Text Content -->
+    <div class="hero-text">
+      <!-- Main Heading -->
+      <h1>@SLAY BODY PIERCING
+        WHERE BODY MEETS ART, DARE TO BE DIFFERENT.</h1>
+      
+      <!-- Subheading Description -->
+      <p>Discover exceptional piercing services that combine <br> style,
+         safety and luxury at Slay Body Piercing Studio!.</p>
+      
+      <!-- Call-to-Action Buttons -->
+      <a class="btn btn-primary" href="booking.html">Book Now</a>
+      <a class="btn btn-outline" href="services.html">Our Services</a>
+    </div>
+    
+    <!-- Hero Image -->
+    <img src="./images/pic8.jpeg" alt="Piercing" />
+  </section>
+
+  <!-- 
+    DEPOSIT INFORMATION SECTION
+    Explains booking process, deposit requirements, and service area
+    CSS Classes: .deposit-info, .trust-icons, .book-btn
+  -->
+  <section class="deposit-info">
+    <!-- Section Heading -->
+    <h2>✨ Secure Your Piercing appointment Today ✨</h2>
+    
+    <!-- Service Description & Deposit Policy -->
+    <p>
+      Slay Body Piercing offers convenient, professional body piercing services at your doorstep within Accra 
+      and Central Regions of Ghana. To ensure an appointment, a 50% deposit  is required upon booking,
+      ensuring us to prepare adequately for your session. Payment of services will be settled upon completion 
+      of the piercing procedure.
+    </p>
+    
+    <!-- Trust Indicators -->
+    <p class="trust-icons">💎 Safe • Hygienic • Professional • Home Service</p>
+    
+    <!-- Book Now Button -->
+    <a href="booking.html" class="book-btn">Book Now</a>
+  </section>
+
+  <!-- 
+    MOBILE NAVIGATION MENU
+    Hidden by default, shown when hamburger menu is clicked
+    CSS Classes: #mobile-nav
+    JavaScript: Controlled by script.js
+  -->
+
+  <div id="mobile-nav">
+    <!-- Close Button -->
+    <button aria-label="Close navigation">&times;</button>
+    
+    <!-- Mobile Navigation Links -->
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="aftercare.html">Aftercare</a>
+    <a href="booking.html">Book Now</a>
+    <a href="about.html">About Us</a>
+  </div>
+
+  <!-- 
+    FOOTER SECTION
+    Contains social media links and copyright information
+    CSS Classes: .site-footer, .footer-content, .footer-social, .footer-bottom
+  -->
+
+  <footer class="site-footer">
+
+    <div class="footer-content">
+      <!-- Social Media Links -->
+      <div class="footer-social">
+        <a href="https://www.instagram.com/slaybodypiercingbysena/">
+          <img class="social-icon" src="images/logo-instagram.svg" alt="Instagram" />
+        </a>
+        <a href="#">
+          <img class="social-icon" src="images/logo-tiktok.svg" alt="TikTok" />
+        </a>
+      </div>
+      
+      <!-- Footer Bottom Section -->
+      <div class="footer-bottom">
+
+        <!-- Copyright Information -->
+        <div class="footer-info">
+          <span>&copy; @2025 SLAY BodyPiercing. All rights reserved.</span>
+          <span>Piercing Services | Accra, Ghana</span>
+        </div>
+      </div>
+      
+      <!-- Additional Footer Info -->
+      <div class="footer-info">
+        <span>© @2025 SLAY BodyPiercing</span>
+      </div>
+    </div>
+  </footer>
+
+</body>
+</html>
+
+
+
+

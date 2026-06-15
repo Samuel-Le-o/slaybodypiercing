@@ -1,0 +1,309 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>About | SLAY BodyPiercing</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+  <link rel="shortcut icon" href="./images/logo/logo.png" type="image/x-icon">
+  <link rel="icon" href="./images/logo/logo.fv.jpg" type="image/png">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuJqEm9ej-6zv-3ZgTUrcpaxcjma_VUUk",
+      authDomain: "slaybodypiercing.firebaseapp.com",
+      projectId: "slaybodypiercing",
+      storageBucket: "slaybodypiercing.firebasestorage.app",
+      messagingSenderId: "799416605246",
+      appId: "1:799416605246:web:499194c1c7ea3b77be4f6f"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  <!-- EmailJS SDK (browser) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer ></script>
+  <!-- jsPDF for PDF receipt -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="aftercare.html">Aftercare</a>
+      <a href="booking.html">Book Now</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    <a class="hd" href="index.html"><img src="./images/logo/logo.jpg" alt="SLAY BodyPiercing" class="logo-img"></a>
+    <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">&#9776;</button>
+  </header>
+
+  <main>
+    <!-- About Introduction Section -->
+    <section class="about-intro">
+      <h1>About SLAY BodyPiercing</h1>
+      <p>Where artistry meets precision, and every piercing tells a story of self-expression and confidence. We bring Accra's premier professional body piercing services directly to your home for ultimate comfort and convenience.</p>
+    </section>
+
+    <!-- Our Story Section -->
+    <section class="about-story">
+      <div class="container">
+        <div class="story-content">
+          <div class="story-text">
+            <h2>Our Story</h2>
+            <p>Founded in 2021, SLAY BodyPiercing emerged from a passion for transforming body art into a safe, empowering, and luxurious experience. We believe that every piercing is more than just jewelry – it's a statement of individuality, a mark of confidence, and a celebration of personal style.</p>
+            <p>Our journey began with a simple vision: to bring professional piercing services directly to our clients' homes, creating the most comfortable and personalized experience possible. Today, we've become Accra's most trusted mobile body piercing service, serving hundreds of satisfied clients in the comfort and privacy of their own spaces.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Values Section -->
+    <section class="about-values">
+      <div class="container">
+        <h2>What Sets Us Apart</h2>
+        <div class="values-grid">
+          <div class="value-card">
+            <div class="value-icon">🏠</div>
+            <h3>Home Comfort</h3>
+            <p>Experience professional piercing services in the comfort and privacy of your own home, eliminating travel stress and creating a relaxed environment.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🛡️</div>
+            <h3>Safety First</h3>
+            <p>We bring hospital-grade sterilization and safety protocols directly to you, maintaining the highest hygiene standards in any environment.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">🎨</div>
+            <h3>Mobile Artistry</h3>
+            <p>Our skilled piercers travel with professional equipment and expertise, delivering studio-quality results wherever you are most comfortable.</p>
+          </div>
+          <div class="value-card">
+            <div class="value-icon">⏰</div>
+            <h3>Convenience</h3>
+            <p>Book appointments that fit your schedule, with flexible timing and personalized service that adapts to your lifestyle and preferences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Our Team Section -->
+    <section class="about-team">
+      <div class="container">
+        <h2>Meet Our Expert Team</h2>
+        <p class="team-description">Our certified mobile piercers are specially trained in home service protocols and the latest techniques. We bring professional-grade equipment and maintain strict hygiene standards in any environment. Every team member is committed to delivering exceptional in-home experiences with complete safety and satisfaction.</p>
+        
+        <div class="team-features">
+          <div class="feature-item">
+            <span class="feature-check">✓</span>
+            <p>Certified mobile piercing specialists</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-check">✓</span>
+            <p>Portable professional-grade equipment</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-check">✓</span>
+            <p>Home service safety protocols</p>
+          </div>
+          <div class="feature-item">
+            <span class="feature-check">✓</span>
+            <p>Flexible scheduling and in-home consultations</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Why Choose Us Section -->
+    <section class="about-choose">
+      <div class="container">
+        <h2>Why Choose SLAY BodyPiercing?</h2>
+        <div class="choose-grid">
+          <div class="choose-item">
+            <div class="choose-number">01</div>
+            <h3>Mobile Convenience</h3>
+            <p>We come to you! Experience professional piercing services in the comfort of your own home, eliminating travel time and creating a stress-free environment.</p>
+          </div>
+          <div class="choose-item">
+            <div class="choose-number">02</div>
+            <h3>Premium Jewelry</h3>
+            <p>We bring an extensive collection of high-quality jewelry directly to your location, allowing you to choose from various styles and materials in comfort.</p>
+          </div>
+          <div class="choose-item">
+            <div class="choose-number">03</div>
+            <h3>Personalized Experience</h3>
+            <p>Enjoy one-on-one attention in your private space with customized consultations and aftercare support tailored to your specific needs.</p>
+          </div>
+          <div class="choose-item">
+            <div class="choose-number">04</div>
+            <h3>Flexible Scheduling</h3>
+            <p>Book appointments that work around your schedule, with evening and weekend availability to accommodate your busy lifestyle.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="about-contact">
+      <div class="container">
+        <div class="contact-content">
+          <div class="contact-info">
+            <h2 id="contact-us">Contact Us</h2>
+            <p>You have an equiriy?. You can reach us on our instagram and tiktok pages.</p>
+            
+            <div class="contact-details">
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-map-marker-alt fa-2x"></i>
+                </div>
+                <div>
+                  <h4>Service Area</h4>
+                  <p>Accra, Ghana<br>Mobile service to your location</p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-envelope fa-2x"></i>
+                </div>
+                <div>
+                  <h4>Email</h4>
+                  <p><a href="mailto:charisdogbe@gmail.com">info@slaybodypiercing</a></p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fas fa-phone-alt fa-2x"></i>
+                </div>
+                <div>
+                  <h4>Phone</h4>
+                  <p><a href="tel:+233550396789">+233 55 039 6789</a></p>
+                </div>
+              </div>
+              <div class="contact-item">
+                <div class="contact-icon">
+                  <i class="fab fa-instagram fa-2x"></i>
+                </div>
+                <div>
+                  <h4>Instagram</h4>
+                  <p><a href="https://www.instagram.com/slaybodypiercingbysena/" target="_blank" rel="noopener">@slaybodypiercing</a></p>
+                </div>
+              </div>
+            </div>
+            
+            <a href="booking.html" class="cta-btn">Book Your Appointment</a>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Reviews Section -->
+    <section id="reviews" class="about-reviews">
+      <div class="container">
+        <h2>What Our Clients Say</h2>
+        <p class="reviews-description">Join hundreds of satisfied clients who trust SLAY BodyPiercing for their body art needs. Share your experience and read what others have to say.</p>
+        
+        <form id="review-form" class="review-form">
+          <div class="form-group">
+            <input type="text" id="reviewer-name" placeholder="Your Name" required>
+            <textarea id="reviewer-text" placeholder="Share your experience with us..." required></textarea>
+          </div>
+          <button type="submit" class="btn btn-primary">Post Review</button>
+        </form>
+        
+        <div class="grid reviews" id="reviews-list">
+          <!-- Client reviews will appear here -->
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <div id="mobile-nav">
+    <button aria-label="Close navigation">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="aftercare.html">Aftercare</a>
+    <a href="booking.html">Book Now</a>
+    <a href="about.html">About Us</a>
+  </div>
+
+
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <div class="footer-main">
+        <div class="footer-brand">
+          <img src="./images/logo/logo.jpg" alt="SLAY BodyPiercing" class="footer-logo">
+          <h3>@SLAY BodyPiercing</h3>
+          <p>Accra's premier mobile body piercing service, bringing professional artistry and safety directly to your home.</p>
+        </div>
+        
+        <div class="footer-links">
+          <div class="footer-column">
+            <h4>Services</h4>
+            <ul>
+              <li><a href="services.html">Ear Piercings</a></li>
+              <li><a href="services.html">Body Piercings</a></li>
+              <li><a href="services.html">Jewelry Selection</a></li>
+              <li><a href="aftercare.html">Aftercare Support</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Company</h4>
+            <ul>
+              <li><a href="about.html">About Us</a></li>
+              <li><a href="gallery.html">Gallery</a></li>
+              <li><a href="reviews.html">Reviews</a></li>
+              <li><a href="booking.html">Book Appointment</a></li>
+            </ul>
+          </div>
+          
+          <div class="footer-column">
+            <h4>Contact</h4>
+            <ul>
+              <li>📧charisdogbe@gmail.com</li>
+              <li>📱 @slaybodypiercingbysena</li>
+              <li>🚗 Mobile Service in Accra</li>
+              <li>⏰ Flexible Scheduling</li>
+            </ul>
+           </div>
+        </div>
+      </div>
+      
+      <div class="footer-social">
+        <h4>Follow Us</h4>
+        <div class="social-links">
+         
+          <a href="https://www.instagram.com/slaybodypiercingbysena/" target="_blank" rel="noopener" aria-label="Instagram">
+            <img src="./images/logo-instagram.svg" class="social-icon" alt="Instagram">
+          </a>
+
+          <a href="#" target="_blank" rel="noopener" aria-label="TikTok">
+            <img src="./images/logo-tiktok.svg" class="social-icon" alt="TikTok">
+          </a>
+         
+          
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div class="footer-info">
+          <span>&copy; @2025 SLAY BodyPiercing. All rights reserved.</span>
+          <span>Mobile Body Piercing Services | Accra, Ghana</span>
+        </div>
+        <div class="footer-cta">
+          <span class="small">Ready for your next piercing? Book your home appointment today!</span>
+        </div>
+      </div>
+    </div>
+    
+  </footer>
+</body>
+</html>

@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Aftercare | SLAY BodyPiercing</title>
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+  <link rel="shortcut icon" href="./images/logo/logo.png" type="image/x-icon">
+  <link rel="icon" href="./images/logo/logo.fv.jpg" type="image/png">
+  <!-- Firebase SDK -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script>
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuJqEm9ej-6zv-3ZgTUrcpaxcjma_VUUk",
+      authDomain: "slaybodypiercing.firebaseapp.com",
+      projectId: "slaybodypiercing",
+      storageBucket: "slaybodypiercing.firebasestorage.app",
+      messagingSenderId: "799416605246",
+      appId: "1:799416605246:web:499194c1c7ea3b77be4f6f"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  <!-- EmailJS SDK (browser) -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer ></script>
+  <!-- jsPDF for PDF receipt -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+</head>
+<body>
+  <header>
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="aftercare.html">Aftercare</a>
+      <a href="booking.html">Book Now</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    <a class="hd" href="index.html"><img src="./images/logo/logo.jpg" alt="SLAY BodyPiercing" class="logo-img"></a>
+    <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">&#9776;</button>
+  </header>
+  <main>
+    <!-- Aftercare Introduction Section -->
+    <section class="aftercare-intro">
+      <h1>Professional Piercing Aftercare</h1>
+      <p>Your piercing journey doesn't end when you leave our studio. Proper aftercare is essential for optimal healing, preventing infections, and ensuring your piercing looks beautiful for years to come. Follow our expert guidance for the best results.</p>
+    </section>
+
+    <!-- Video Section -->
+    <section id="aftercare" class="aftercare-section container">
+      <h2>Expert Aftercare Video Guide</h2>
+      <p class="video-description">Watch our comprehensive video tutorial featuring professional aftercare techniques demonstrated by our experienced piercers. This essential guide covers everything you need to know for proper healing.</p>
+      <div class="aftercare-video">
+        <video id="aftercareVideo" src="./images/Treatmentvideo.MOV" autoplay muted controls class="aftercare-slideshow"></video>
+      </div>
+    </section>
+
+    <!-- Detailed Aftercare Instructions -->
+    <section class="aftercare-details">
+      <div class="container">
+        <h2>Complete Aftercare Instructions</h2>
+        
+        <div class="aftercare-grid">
+          <div class="aftercare-card">
+            <div class="card-icon">🧼</div>
+            <h3>Daily Cleaning</h3>
+            <ul>
+              <li>Clean hands thoroughly before touching your piercing</li>
+              <li>Use sterile saline solution or sea salt water (1/4 tsp per cup)</li>
+              <li>Gently clean 2-3 times daily</li>
+              <li>Pat dry with clean paper towel</li>
+            </ul>
+          </div>
+
+          <div class="aftercare-card">
+            <div class="card-icon">🚫</div>
+            <h3>What to Avoid</h3>
+            <ul>
+              <li>Don't touch or twist the jewelry unnecessarily</li>
+              <li>Avoid alcohol, hydrogen peroxide, or harsh chemicals</li>
+              <li>No swimming pools, hot tubs, or baths</li>
+              <li>Avoid makeup, lotions, or perfumes near the piercing</li>
+            </ul>
+          </div>
+
+          <div class="aftercare-card">
+            <div class="card-icon">⏰</div>
+            <h3>Healing Timeline</h3>
+            <ul>
+              <li><strong>Earlobes:</strong> 6-8 weeks</li>
+              <li><strong>Cartilage:</strong> 3-6 months</li>
+              <li><strong>Nose:</strong> 2-4 months</li>
+              <li><strong>Navel:</strong> 6-12 months</li>
+            </ul>
+          </div>
+
+          <div class="aftercare-card">
+            <div class="card-icon">⚠️</div>
+            <h3>Warning Signs</h3>
+            <ul>
+              <li>Excessive redness, swelling, or heat</li>
+              <li>Yellow or green discharge</li>
+              <li>Severe pain or throbbing</li>
+              <li>Red streaking from the piercing site</li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="aftercare-tips">
+          <h3>Professional Tips for Optimal Healing</h3>
+          <div class="tips-grid">
+            <div class="tip-item">
+              <span class="tip-number">1</span>
+              <p><strong>Sleep Smart:</strong> Use a travel pillow or sleep on the opposite side to avoid pressure on new piercings.</p>
+            </div>
+            <div class="tip-item">
+              <span class="tip-number">2</span>
+              <p><strong>Jewelry Care:</strong> Don't change jewelry until fully healed. Only use high-quality materials like titanium or surgical steel.</p>
+            </div>
+            <div class="tip-item">
+              <span class="tip-number">3</span>
+              <p><strong>Lifestyle:</strong> Maintain a healthy diet, stay hydrated, and get adequate sleep to support healing.</p>
+            </div>
+            <div class="tip-item">
+              <span class="tip-number">4</span>
+              <p><strong>Follow-up:</strong> Contact us immediately if you notice any concerning symptoms or have questions.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="emergency-contact">
+          <h3>Need Help?</h3>
+          <p>If you experience any complications or have concerns about your piercing, don't hesitate to contact us immediately. Your health and safety are our top priorities.</p>
+          <a href="about.html#contact-us" class="contact-btn">Contact Us Now</a>
+
+          
+
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="footer-content">
+      <!-- Social Media Links -->
+      <div class="footer-social">
+        <a href="https://www.instagram.com/slaybodypiercingbysena/">
+          <img class="social-icon" src="images/logo-instagram.svg" alt="Instagram" />
+        </a>
+        <a href="#">
+          <img class="social-icon" src="images/logo-tiktok.svg" alt="TikTok" />
+        </a>
+      </div>
+      
+      <!-- Footer Bottom Section -->
+      <div class="footer-bottom">
+        <!-- Copyright Information -->
+        <div class="footer-info">
+          <span>&copy; @2025 SLAY BodyPiercing. All rights reserved.</span>
+          <span>Piercing Services | Accra, Ghana</span>
+        </div>
+      </div>
+      
+      <!-- Additional Footer Info -->
+      <div class="footer-info">
+        <span>© @2025 SLAY BodyPiercing</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="mobile-nav">
+    <button aria-label="Close navigation">&times;</button>
+    <a href="index1.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="booking.html">Book Now</a>
+    <a href="about.html">About Us</a>
+  </div>
+</body>
+</html>

@@ -1,0 +1,425 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+  ========================================
+  SLAY BODYPIERCING - SERVICES PAGE
+  ========================================
+  Displays all piercing services with categories:
+  - Ear Piercings (lobe, helix, tragus, etc.)
+  - Body Piercings (navel, nose, etc.)
+  - Features: Service cards, pricing, booking buttons
+  Last updated: 2025
+  ========================================
+-->
+<head>
+  <!-- META TAGS & SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Services | SLAY BodyPiercing</title>
+  
+  <!-- STYLESHEETS & SCRIPTS -->
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+  
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="./images/logo/logo.png" type="image/x-icon">
+  <link rel="icon" href="./images/logo/logo.fv.jpg" type="image/png">
+  
+  <!-- FIREBASE SDK - Database connection -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script>
+    // Firebase configuration for database connection
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuJqEm9ej-6zv-3ZgTUrcpaxcjma_VUUk",
+      authDomain: "slaybodypiercing.firebaseapp.com",
+      projectId: "slaybodypiercing",
+      storageBucket: "slaybodypiercing.firebasestorage.app",
+      messagingSenderId: "799416605246",
+      appId: "1:799416605246:web:499194c1c7ea3b77be4f6f"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  
+  <!-- EMAILJS SDK - For booking form submissions -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer ></script>
+  
+  <!-- JSPDF - For generating PDF receipts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+</head>
+<body>
+<!-- 
+  ========================================
+  SERVICES PAGE BODY CONTENT
+  ========================================
+-->
+
+  <!-- 
+    HEADER SECTION
+    Contains: Main navigation, logo, mobile hamburger menu
+    CSS Classes: header, nav#nav, .hd, .hamburger
+  -->
+  <header>
+    <!-- Desktop Navigation Menu -->
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="aftercare.html">Aftercare</a>
+      <a href="booking.html">Book Now</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    
+    <!-- Logo (clickable, links to home) -->
+    <a class="hd" href="index.html">
+      <img src="./images/logo/logo.jpg" alt="SLAY BodyPiercing" class="logo-img">
+    </a>
+    
+    <!-- Mobile Hamburger Menu Button -->
+    <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+      &#9776;
+    </button>
+  </header>
+
+
+  <!-- 
+    MAIN CONTENT AREA
+    Contains: Service introduction, piercing categories, service cards
+  -->
+  <main>
+    <!-- 
+      SERVICE INTRODUCTION SECTION
+      Welcome message and service overview
+      CSS Classes: .service-intro
+    -->
+    <section class="service-intro">
+      <!-- Section Heading -->
+      <h2>Discover Your Perfect Piercing</h2> 
+      
+      <!-- Service Description -->
+      <p>At Slay Body Piercing, we believe every piercing is a statement and confidence. 
+        From subtle earlobe studs to bold body piercings. We provide safe, hygenic, and professional 
+        services tailored to your unique look. Explore our categories below and find the piercing that matches your
+        vibe.
+      </p>
+    </section>
+   
+   
+    <!-- 
+      SERVICES SECTION
+      Main container for all piercing service categories
+      CSS Classes: .services
+    -->
+    <section class="services">
+      
+      <!-- 
+        EAR PIERCINGS CATEGORY
+        Contains all ear-related piercing services
+        CSS Classes: .category-section, .cat-hd, .piercing-row, .piercing-card
+      -->
+      <div class="category-section">
+        <!-- Category Heading -->
+        <h2 class="cat-hd">Ear Piercings</h2>
+        
+        <!-- Piercing Cards Row -->
+        <div class="piercing-row">
+          <!-- Baby Lobe Piercing Card -->
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/BABY LOBE.jpg" alt="Ear/BabyLobePiercing">
+            <h3 class="p-head">Baby Lobe Piercing</h3>
+            <p>Simple, stylish and fast healing. Perfect for studs, hoops or bold dangles.</p>
+            <p>(GHS 85)</p>
+            <!-- Booking Button - adds service to cart -->
+            <button class="p-btn" data-service="Baby Lobe" data-price="85">BOOK NOW</button>
+          </div>
+
+          <!-- Lobe Piercing Card -->
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/LOBE PIERCING.webp" alt="lobe">
+            <h3 class="p-head">Lobe Piercing</h3>
+            <p>Classic ear piercing, versatile and timeless.</p>
+            <p>(GHS 75)</p>
+            <!-- Booking Button - adds service to cart -->
+            <button class="p-btn" data-service="Lobe" data-price="75">BOOK NOW</button>
+          </div>
+
+          <!-- Transverse Piercing Card -->
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/transverse piercing.webp" alt="Transverse">
+            <h3 class="p-head">Transverse Lobe Piercing</h3>
+            <p>Unique horizontal piercing through the earlobe.</p>
+            <p>(GHS 100)</p>
+            <!-- Booking Button - adds service to cart -->
+            <button class="p-btn" data-service="Transverse" data-price="100">BOOK NOW</button>
+          </div>
+
+          <!-- Helix Piercing Card -->
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/helix piercing.avif" alt="Helix">
+            <h3 class="p-head">Helix Piercing</h3>
+            <p>Upper ear cartilage piercing, modern and edgy.</p>
+            <p>(GHS 120)</p>
+            <!-- Booking Button - adds service to cart -->
+            <button class="p-btn" data-service="Helix" data-price="120">BOOK NOW</button>
+          </div>
+
+          <!-- Tragus Piercing Card -->
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/tragus.jpg" alt="Tragus">
+            <h3 class="p-head">Tragus Piercing</h3>
+            <p>Small cartilage piercing in front of ear canal.</p>
+             <p>(GHS 220)</p>
+            <button class="p-btn" data-service="Tragus" data-price="220">BOOK NOW</button>
+          </div>
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/counch.webp" alt="Conch">
+            <h3 class="p-head">Conch Piercing</h3>
+            <p>Inner ear cartilage piercing, bold statement piece.</p>
+             <p>(GHS 200)</p>
+            <button class="p-btn" data-service="Conch" data-price="200">BOOK NOW</button>
+          </div> 
+
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/daith.webp" alt="Daith Piercing">
+            <h3 class="p-head">Daith Piercing</h3>
+            <p>Inner ear fold piercing, trendy and unique.</p>
+             <p>(GHS 220)</p>
+            <button class="p-btn" data-service="Daith" data-price="220">BOOK NOW</button>
+          </div>
+
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/forward helix.webp" alt="Forward Helix Piercing">
+            <h3 class="p-head">Forward Helix Piercing</h3>
+            <p>Front upper cartilage piercing, delicate and stylish.</p>
+             <p>(GHS 220)</p>
+            <button class="p-btn" data-service="Forward Helix" data-price="220">BOOK NOW</button>
+          </div>
+
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/sung piercing.webp" alt="Snug">
+            <h3 class="p-head">Snug Piercing</h3>
+            <p>Anti-helix cartilage piercing, sophisticated look.</p>
+             <p>(GHS 200)</p>
+            <button class="p-btn" data-service="Snug" data-price="200">BOOK NOW</button>
+          </div>
+
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/rook piercing.webp" alt="Rook">
+            <h3 class="p-head">Rook Piercing</h3>
+            <p>Upper ear fold piercing, distinctive placement.</p>
+             <p>(GHS 230)</p>
+            <button class="p-btn" data-service="Rook" data-price="230">BOOK NOW</button>
+          </div>
+
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/industrial piercing.jpg" alt="Industrial">
+            <h3 class="p-head">Industrial Piercing</h3>
+            <p>Connected double piercing with barbell, bold choice.</p>
+             <p>(GHS 250)</p>
+            <button class="p-btn" data-service="Industrial" data-price="250">BOOK NOW</button>
+          </div>
+
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/surgace_tragus.png" alt="Surface">
+            <h3 class="p-head">Surface_Tragus Piercing</h3>
+            <p>Flat surface piercing, artistic and creative.</p>
+             <p>(GHS 250)</p>
+            <button class="p-btn" data-service="Surface" data-price="250">BOOK NOW</button>
+          </div>
+
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/flat counch.jpg" alt="Flat-Conch">
+            <h3 class="p-head">Flat-Conch Piercing</h3>
+            <p>Flat ear cartilage piercing, minimalist style.</p>
+             <p>(GHS 220)</p>
+            <button class="p-btn" data-service="Flat-Conch" data-price="220">BOOK NOW</button>
+          </div> 
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/anti-tragus.jpg" alt="Anti-Tragus">
+            <h3 class="p-head">Anti-Tragus Piercing</h3>
+            <p>Opposite tragus piercing, symmetrical balance.</p>
+             <p>(GHS 250)</p>
+            <button class="p-btn" data-service="Anti-Tragus" data-price="250">BOOK NOW</button>
+          </div>
+
+        </div>
+      </div>
+      </section>
+
+
+   
+   
+   
+      <!-- Facial Piercings -->
+       
+      
+      
+      <section class="services">
+        
+        <div class="category-section">
+        <h2 class="cat-hd">Facial Piercings</h2>
+        <div class="piercing-row"> 
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/nostril piercing.webp" alt="Nostril">
+            <h3 class="p-head">Nostril Piercing</h3>
+            <p>Classic nose piercing, elegant and versatile.</p>
+             <p>(GHS 270)</p>
+            <button class="p-btn" data-service="Nostril" data-price="270">BOOK NOW</button>
+          </div>
+
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/septum piercing.avif" alt="Septum">
+            <h3 class="p-head">Septum Piercing</h3>
+            <p>Center nose piercing, bold and striking.</p>
+             <p>(GHS 250)</p>
+            <button class="p-btn" data-service="Septum" data-price="250">BOOK NOW</button>
+          </div> 
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/eyebrow.jpg" alt="Eyebrow">
+            <h3 class="p-head">Eyebrow Piercing</h3>
+            <p>Facial piercing above the eye, edgy statement.</p>
+             <p>(GHS 300)</p>
+            <button class="p-btn" data-service="Eyebrow" data-price="300">BOOK NOW</button>
+          </div> 
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/lip piericng.jpg" alt="Lip">
+            <h3 class="p-head">Lip Piercing</h3>
+            <p>Mouth area piercing, expressive and bold.</p>
+             <p>(GHS 300)</p>
+            <button class="p-btn" data-service="Lip" data-price="300">BOOK NOW</button>
+          </div>
+
+        </div>
+      </div> 
+      </section>
+
+
+
+                        <!-- Oral Piercings -->
+
+      <section class="services">
+       
+       <div class="category-section">
+        <h2 class="cat-hd">Oral Piercings</h2>
+        <div class="piercing-row"> 
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/tongue piercing.jpg" alt="Tongue">
+            <h3 class="p-head">Tongue Piercing</h3>
+            <p>Center tongue piercing, classic oral modification.</p>
+             <p>(GHS 350)</p>
+            <button class="p-btn" data-service="Tongue" data-price="350">BOOK NOW</button>
+          </div> 
+
+
+          <div class="piercing-card">
+            <img src="./images/Piercing_Types/smiley.jpg" alt="Smiley">
+            <h3 class="p-head">Smiley Piercing</h3>
+            <p>Upper lip frenulum piercing, hidden surprise.</p>
+             <p>(GHS 250)</p>
+            <button class="p-btn" data-service="Smiley" data-price="250">BOOK NOW</button>
+          </div> 
+
+        </div>
+      </div>
+      </section>
+
+
+
+
+      <!-- Body Piercings -->
+
+      <section class="services">
+        <div class="category-section">
+        <h2 class="cat-hd">Body Piercings</h2>
+        <div class="piercing-row"> 
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/nipple piercing.jpg" alt="Nipple">
+            <h3 class="p-head">Nipple Piercing</h3>
+            <p>Intimate body piercing, personal expression.</p>
+             <p>(GHS 380)</p>
+            <button class="p-btn" data-service="Nipple" data-price="380">BOOK NOW</button>
+          </div> 
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/belly piercing.jpg" alt="Belly">
+            <h3 class="p-head">Belly Piercing</h3>
+            <p>Navel piercing, popular and fashionable.</p>
+             <p>(GHS 320)</p>
+            <button class="p-btn" data-service="Belly" data-price="320">BOOK NOW</button>
+          </div> 
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/sternum.jpg" alt="Sternum">
+            <h3 class="p-head">Sternum Piercing</h3>
+            <p>Chest area surface piercing, dramatic placement.</p>
+             <p>(GHS 350)</p>
+            <button class="p-btn" data-service="Sternum" data-price="350">BOOK NOW</button>
+          </div> 
+
+           <div class="piercing-card">
+            <img src="./images/Piercing_Types/dermal piericng.jpg" alt="Dermal">
+            <h3 class="p-head">Dermal Piercing</h3>
+            <p>Single-point surface piercing, versatile placement.</p>
+             <p>(GHS 450)</p>
+            <button class="p-btn" data-service="Dermal" data-price="450">BOOK NOW</button>
+          </div> 
+
+        </div>
+      </div>
+    </section>
+
+
+<!-- HAMBURGER -->
+    <div id="mobile-nav">
+      <button aria-label="Close navigation">&times;</button>
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="aftercare.html">Aftercare</a>
+      <a href="booking.html">Book Now</a>
+      <a href="about.html">About Us</a>
+    </div>
+  </main>
+
+  <hr>
+
+
+
+  
+  <footer class="site-footer">
+    <div class="footer-content">
+      <!-- Social Media Links -->
+      <div class="footer-social">
+        <a href="https://www.instagram.com/slaybodypiercingbysena/">
+          <img class="social-icon" src="images/logo-instagram.svg" alt="Instagram" />
+        </a>
+        <a href="#">
+          <img class="social-icon" src="images/logo-tiktok.svg" alt="TikTok" />
+        </a>
+      </div>
+      
+      <!-- Footer Bottom Section -->
+      <div class="footer-bottom">
+        <!-- Copyright Information -->
+        <div class="footer-info">
+          <span>&copy; @2025 SLAY BodyPiercing. All rights reserved.</span>
+          <span>Piercing Services | Accra, Ghana</span>
+        </div>
+      </div>
+      
+      <!-- Additional Footer Info -->
+      <div class="footer-info">
+        <span>© @2025 SLAY BodyPiercing</span>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

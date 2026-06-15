@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<!-- 
+  ========================================
+  SLAY BODYPIERCING - BOOKING PAGE
+  ========================================
+  Complete booking system with:
+  - Customer details form
+  - Service selection with cart functionality
+  - EmailJS integration for form submission
+  - PDF receipt generation
+  - Mobile Money payment instructions
+  Last updated: 2025
+  ========================================
+-->
+<head>
+  <!-- META TAGS & SEO -->
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Book | SLAY BodyPiercing</title>
+  
+  <!-- STYLESHEETS & SCRIPTS -->
+  <link rel="stylesheet" href="./style.css">
+  <script src="./script.js" defer></script>
+  
+  <!-- FAVICON -->
+  <link rel="shortcut icon" href="./images/logo/logo.png" type="image/x-icon">
+  <link rel="icon" href="./images/logo/logo.fv.jpg" type="image/png">
+  
+  <!-- FIREBASE SDK - Database connection -->
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-app-compat.js"></script>
+  <script src="https://www.gstatic.com/firebasejs/9.23.0/firebase-firestore-compat.js"></script>
+  <script>
+    // Firebase configuration for database connection
+    const firebaseConfig = {
+      apiKey: "AIzaSyCuJqEm9ej-6zv-3ZgTUrcpaxcjma_VUUk",
+      authDomain: "slaybodypiercing.firebaseapp.com",
+      projectId: "slaybodypiercing",
+      storageBucket: "slaybodypiercing.firebasestorage.app",
+      messagingSenderId: "799416605246",
+      appId: "1:799416605246:web:499194c1c7ea3b77be4f6f"
+    };
+    firebase.initializeApp(firebaseConfig);
+    const db = firebase.firestore();
+  </script>
+  
+  <!-- EMAILJS SDK - For booking form submissions -->
+  <script src="https://cdn.jsdelivr.net/npm/@emailjs/browser@4/dist/email.min.js" defer ></script>
+  
+  <!-- JSPDF - For generating PDF receipts -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js" defer></script>
+</head>
+<body>
+<!-- 
+  ========================================
+  BOOKING PAGE BODY CONTENT
+  ========================================
+-->
+
+  <!-- 
+    HEADER SECTION
+    Contains: Logo, navigation, mobile hamburger menu
+    CSS Classes: header, nav#nav, .hd, .hamburger
+  -->
+  <header>
+    <!-- Logo (clickable, links to home) -->
+    <a class="hd" href="index.html">
+      <img src="./images/logo/logo.jpg" alt="SLAY BodyPiercing" class="logo-img">
+    </a>
+    
+    <!-- Desktop Navigation Menu -->
+    <nav id="nav">
+      <a href="index.html">Home</a>
+      <a href="services.html">Services</a>
+      <a href="gallery.html">Gallery</a>
+      <a href="aftercare.html">Aftercare</a>
+      <a href="booking.html">Book Now</a>
+      <a href="about.html">About Us</a>
+    </nav>
+    
+    <!-- Mobile Hamburger Menu Button -->
+    <button class="hamburger" id="hamburger" aria-label="Open navigation" aria-controls="mobile-nav" aria-expanded="false">
+      &#9776;
+    </button>
+  </header>
+  <!-- 
+    MAIN CONTENT AREA
+    Contains: Booking introduction, booking form, service selection
+  -->
+  <main>
+    <!-- 
+      BOOKING INTRODUCTION SECTION
+      Welcome message for booking page
+      CSS Classes: .booking-intro
+    -->
+    <section class="booking-intro">
+      <h1>Book Your Home Piercing</h1>
+      <p>Schedule your professional piercing appointment in the comfort of your own home. Our certified mobile piercers bring studio-quality service directly to you.</p>
+    </section>
+
+    <!-- 
+      BOOKING FORM SECTION
+      Main booking container with form and payment info
+      CSS Classes: #booking, .container, .booking-wrap
+    -->
+    <section id="booking" class="container">
+      <div class="booking-wrap">
+        <!-- 
+          BOOKING HEADER
+          Contains form title and payment information
+          CSS Classes: .booking-header, .payment-note
+        -->
+        <div class="booking-header">
+          <h2 class="bk-h">Complete Your Booking</h2>
+          
+          <!-- Payment Information Notice -->
+          <div class="payment-note">
+            <div class="note-icon">💳</div>
+            <div class="note-content">
+              <strong>Payment Information:</strong> Your booking will be confirmed after a 50% deposit via Mobile Money. Payment instructions will be sent after form submission.
+            </div>
+          </div>
+        </div>
+        
+        <!-- 
+          MAIN BOOKING FORM
+          EmailJS integration for form submission
+          Form ID: booking-form (used in script.js)
+        -->
+        <form id="booking-form">
+          <!-- 
+            CUSTOMER DETAILS SECTION
+            Personal information form fields
+            CSS Classes: .card, .form-section, .customer-details
+          -->
+          <div class="card form-section customer-details">
+            <!-- Section Header -->
+            <div class="section-header">
+              <div class="section-icon">👤</div>
+              <h3 class="sl-se">Customer Details</h3>
+            </div>
+            
+            <!-- Form Grid Layout -->
+            <div class="customer-form-grid">
+              <!-- Left Column - Personal Info -->
+              <div class="form-column">
+                <label for="name">Full name</label>
+                <input id="name" name="from_name" type="text" placeholder="Jane Doe" required>
+                
+                <label for="phone">Phone</label>
+                <input id="phone" name="phone" type="tel" placeholder="024 000 0000" required>
+                
+                <label for="email">Email</label>
+                <input id="email" name="reply_to" type="email" placeholder="you@example.com" required>
+              </div>
+
+              <!-- Right Column - Location Info -->
+              <div class="form-column">
+                <label for="region">Region (Ghana)</label>
+                <select id="region" name="region" required>
+                  <option value="" disabled selected hidden>Select region</option>
+                  <option>Greater Accra</option>
+                  <option>Central</option>
+                </select>
+                <label for="city">City / Area</label>
+                <input id="city" name="city" type="text" placeholder="Legon, Madina, Sowutuom..." required>
+                <label for="date">Preferred date</label>
+                <input id="date" name="preferred_date" type="date" min="" required>
+                <label for="time">Preferred time</label>
+                <input id="time" name="preferred_time" type="time" required>
+              </div>
+            </div>
+          </div>
+          <!-- Services Section - Below Customer Details -->
+          <div class="card service-section">
+            <div class="section-header">
+              <div class="section-icon">💎</div>
+              <h3 class="sl-se">Select Services</h3>
+            </div>
+            <div class="services-grid">
+              <!-- Ear Piercings -->
+              <div class="piercing-category">
+                <label class="category-label">Ear Piercings</label>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" class="svc" name="service_baby_lobe" value="Baby Lobe(GHS 85)" data-name="Baby Lobe" data-price="85"> Baby Lobe(GHS 85) </label>
+                  <label><input type="checkbox" class="svc" name="service_lobe" value="Lobe(GHS 75)" data-name="Lobe" data-price="75"> Lobe(GHS 75)</label>
+                  <label><input type="checkbox" class="svc" name="service_transverse" value="Transverse(GHS 100)" data-name="Transverse" data-price="100"> Transverse Lobe(GHS 100)</label>
+                  <label><input type="checkbox" class="svc" name="service_helix" value="Helix(GHS 120)" data-name="Helix" data-price="120"> Helix(GHS 120)  </label>
+                  <label><input type="checkbox" class="svc" name="service_tragus" value="Tragus(GHS 220)" data-name="Tragus" data-price="220"> Tragus(GHS 220) </label>
+                  <label><input type="checkbox" class="svc" name="service_conch" value="Conch(GHS 200)" data-name="Conch" data-price="200"> Conch(GHS 200)  </label>
+                  <label><input type="checkbox" class="svc" name="service_daith" value="Daith(GHS 220)" data-name="Daith" data-price="220"> Daith(GHS 220)  </label>
+                  <label><input type="checkbox" class="svc" name="service_forward_helix" value="Forward Helix(GHS 220)" data-name="Forward Helix" data-price="220"> Forward Helix(GHS 220) </label>
+                  <label><input type="checkbox" class="svc" name="service_snug" value="Snug(GHS 200)" data-name="Snug" data-price="200"> Snug(GHS 200) </label>
+                  <label><input type="checkbox" class="svc" name="service_rook" value="Rook(GHS 230)" data-name="Rook" data-price="230"> Rook( GHS 230) </label>
+                  <label><input type="checkbox" class="svc" name="service_industrial" value="Industrial(GHS 250)" data-name="Industrial" data-price="250"> Industrial(GHS 250)  </label>
+                  <label><input type="checkbox" class="svc" name="service_surface" value="Surface(GHS 250)" data-name="Surface" data-price="250"> Surface Tragus(GHS 250) </label>
+                  <label><input type="checkbox" class="svc" name="service_flat_conch" value="Flat-Conch(GHS 220)" data-name="Flat-Conch" data-price="220"> Flat-Conch(GHS 220) </label>
+                  <label><input type="checkbox" class="svc" name="service_anti_tragus" value="Anti-Tragus(GHS 250)" data-name="Anti-Tragus" data-price="250"> Anti-Tragus(GHS 250 )</label>
+                </div>
+              </div>
+            </div>
+
+
+              <!-- Facial Piercings -->
+              <div class="piercing-category">
+                <label class="category-label">Facial Piercings</label>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" class="svc" name="service_nostril" value="Nostril(GHS 270)" data-name="Nostril" data-price="270"> Nostril(GHS 270)  </label>
+                  <label><input type="checkbox" class="svc" name="service_septum" value="Septum(GHS 250)" data-name="Septum" data-price="250"> Septum(GHS 250)  </label>
+                  <label><input type="checkbox" class="svc" name="service_eyebrow" value="Eyebrow(GHS 300)" data-name="Eyebrow" data-price="300"> Eyebrow(GHS 300)  </label>
+                  <label><input type="checkbox" class="svc" name="service_lip" value="Lip(GHS 300)" data-name="Lip" data-price="300"> Lip(GHS 300)  </label>
+                </div>
+              </div>
+
+
+              <!-- Oral Piercings -->
+              <div class="piercing-category">
+                <label class="category-label">Oral Piercings</label>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" class="svc" name="service_tongue" value="Tongue(GHS 350)" data-name="Tongue" data-price="350"> Tongue(GHS 350)  </label>
+                  <label><input type="checkbox" class="svc" name="service_smiley" value="Smiley(GHS 250)" data-name="Smiley" data-price="250"> Smiley(GHS 250) </label>
+                </div>
+              </div>
+
+
+              <!-- Body Piercings -->
+              <div class="piercing-category">
+                <label class="category-label">Body Piercings</label>
+                <div class="checkbox-group">
+                  <label><input type="checkbox" class="svc" name="service_nipples" value="Nipples(GHS 380)" data-name="Nipple" data-price="380"> Nipples(GHS 380)  </label>
+                  <label><input type="checkbox" class="svc" name="service_belly" value="Belly(GHS 320)" data-name="Belly" data-price="320"> Belly(GHS 320)  </label>
+                  <label><input type="checkbox" class="svc" name="service_sternum" value="Sternum(GHS 350)" data-name="Sternum" data-price="350"> Sternum(GHS 350)  </label>
+                  <label><input type="checkbox" class="svc" name="service_dermal" value="Dermal(GHS 450)" data-name="Dermal" data-price="450"> Dermal(GHS 450)  </label>
+                </div>
+              </div>
+
+
+            </div>
+            <div class="additional-notes">
+              <label for="notes">Additional Notes</label>
+              <textarea id="notes" name="message" rows="4" placeholder="Any special requests or questions?"></textarea>
+            </div>
+          </div>
+
+
+          <div class="cart-container">
+            <div class="card cart-section-full">
+              <div class="section-header">
+                <div class="section-icon">🛒</div>
+                <h3>Your Cart</h3>
+              </div>
+              <ul id="cart-items"></ul>
+              <p class="small">Mandatory treatment package is automatically included (GHS 65).</p>
+              <div class="total">Total: GHS <span id="total">0.00</span></div>
+              <div class="cart-section">
+                <button class="btn btn-outline" id="previewBtn" type="button">Preview</button>
+                <button class="btn btn-primary" id="checkoutBtn" type="button">Checkout</button>
+              </div>
+            </div>
+
+
+          </div>
+        </form>
+        <!-- hidden shop cart for belly-rings additions -->
+        <div id="shop-cart"></div>
+      </div>
+    </section>
+    
+    <!-- Receipt Modal -->
+    <div id="modal" class="modal">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h3>Booking Receipt</h3>
+          <button id="closeModal" class="close-btn">&times;</button>
+        </div>
+        <div class="modal-body">
+          <pre id="receipt"></pre>
+        </div>
+        <div class="modal-footer">
+          <button id="downloadPdf" class="btn btn-primary">Download PDF</button>
+        </div>
+      </div>
+    </div>
+  </main>
+
+ <footer class="site-footer">
+    <div class="footer-content">
+      <!-- Social Media Links -->
+      <div class="footer-social">
+        <a href="https://www.instagram.com/slaybodypiercingbysena/">
+          <img class="social-icon" src="images/logo-instagram.svg" alt="Instagram" />
+        </a>
+        <a href="#">
+          <img class="social-icon" src="images/logo-tiktok.svg" alt="TikTok" />
+        </a>
+      </div>
+      
+      <!-- Footer Bottom Section -->
+      <div class="footer-bottom">
+        <!-- Copyright Information -->
+        <div class="footer-info">
+          <span>&copy; @2025 SLAY BodyPiercing. All rights reserved.</span>
+          <span>Piercing Services | Accra, Ghana</span>
+        </div>
+      </div>
+      
+      <!-- Additional Footer Info -->
+      <div class="footer-info">
+        <span>© @2025 SLAY BodyPiercing</span>
+      </div>
+    </div>
+  </footer>
+
+  <div id="mobile-nav">
+    <button aria-label="Close navigation">&times;</button>
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="gallery.html">Gallery</a>
+    <a href="aftercare.html">Aftercare</a>
+    <a href="booking.html">Book Now</a>
+    <a href="about.html">About Us</a>
+  </div>
+</body>
+</html>
