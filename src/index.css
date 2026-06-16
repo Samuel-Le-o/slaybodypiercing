@@ -1,0 +1,32 @@
+@import "tailwindcss";
+
+@theme {
+  /* Blush Beauty Studio Signature Luxury Palette Tokens */
+  --color-blush: #fadadd;
+  --color-blush-light: #fff0f2;
+  --color-blush-dark: #e8b4b8;
+  --color-rosegold: #b76e79;
+  --color-studio-dark: #2a1f21;
+  --color-studio-gray: #7d6e70;
+  --color-studio-bg: #fcf9f9;
+
+  /* Premium Typography Tokens */
+  --font-serif: "Playfair Display", "Georgia", serif;
+  --font-sans: "Montserrat", "Inter", sans-serif;
+}
+
+body {
+  background-color: var(--color-studio-bg);
+  color: var(--color-studio-dark);
+  font-family: var(--font-sans);
+}
+
+.studio-glass {
+  background: rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(183, 110, 121, 0.15);
+}
+
+.studio-shadow {
+  box-shadow: 0 20px 40px -15px rgba(42, 31, 33, 0.06);
+}
